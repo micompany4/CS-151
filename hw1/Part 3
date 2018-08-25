@@ -1,8 +1,13 @@
-
 import java.util.*;
 
 public class Encoding
 {
+	
+	public static String permutate(String in)
+	{
+		... 
+		
+	}
 	
    public static Set<String> morseCodes(int m, int n)
    {
@@ -20,8 +25,12 @@ public class Encoding
       }
       
       result.add(code);
-      
+      for(int t = 0; t < 14; t++)
+      {
+    	  result.add(permutate(code));
+      }
       
       return result;
    }
+   
 }
