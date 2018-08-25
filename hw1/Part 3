@@ -8,18 +8,19 @@ public class Encoding
    {
       Set<String> result = new TreeSet<>();
    
-      int total = m+n;
-      String morse = "";
-      for(int i = 0; i < n; i++)
+      String code = new String();
+      
+      for(int j = 0; j < n; j++)
       {
-    	  morse+= "-";
+    	  code += "-";
       }
-      for(int j = 0; j < m; j++)
+      for(int i = 0; i < m; i++)
       {
-    	  morse += ".";
+    	  code += ".";
       }
       
-      result.add(morse);
+      result.add(code);
+      
       
       return result;
    }
