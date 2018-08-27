@@ -1,35 +1,46 @@
 import java.util.*;
 
+
 public class Encoding
 {
 	
-	public static String permutate(String in)
+	public static Set<String> permutation(String s)
 	{
-		... 
+		Set<String> perm = new HashSet<>();
 		
+		for(int i = 0; i < s.length(); i++)
+		{
+			String fixed = s.substring(i, i+1);
+			String rest = s.substring(0, i) + s.substring(i+1, s.length());
+			//permutation(rest) finds a possible permutation from the rest 
+			//of the elements
+			//adds each permutation to the Set 
+			perm.add(fixed + permutation(rest));
+			//repeats process until every element has a chance to be "fixed" and 
+			//all permutations were found from the "rest" to be added
+		}
+		
+		return perm;
 	}
+	
 	
    public static Set<String> morseCodes(int m, int n)
    {
       Set<String> result = new TreeSet<>();
-   
-      String code = new String();
       
-      for(int j = 0; j < n; j++)
+      String code = new String();
+      for(int i = 0; i < n; i++)
       {
-    	  code += "-";
+         code += "-";
       }
-      for(int i = 0; i < m; i++)
+      for(int j = 0; j < m; j++)
       {
-    	  code += ".";
+         code += ".";
       }
       
       result.add(code);
-      for(int t = 0; t < 14; t++)
-      {
-    	  result.add(permutate(code));
-      }
-      
+		
+      result = permutation(code);
       return result;
    }
    
