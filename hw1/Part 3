@@ -6,18 +6,18 @@ public class Encoding
 	
 	public static Set<String> permutation(String s)
 	{
-		Set<String> perm = new HashSet<>();
+		Set<String> perm = new TreeSet<>();
+		
+		//String perm = new String();
 		
 		for(int i = 0; i < s.length(); i++)
 		{
 			String fixed = s.substring(i, i+1);
 			String rest = s.substring(0, i) + s.substring(i+1, s.length());
 			//permutation(rest) finds a possible permutation from the rest 
-			//of the elements
-			//adds each permutation to the Set 
+			//of the elements to 
 			perm.add(fixed + permutation(rest));
-			//repeats process until every element has a chance to be "fixed" and 
-			//all permutations were found from the "rest" to be added
+			//permutation(rest);
 		}
 		
 		return perm;
@@ -41,6 +41,7 @@ public class Encoding
       result.add(code);
 		
       result = permutation(code);
+		
       return result;
    }
    
