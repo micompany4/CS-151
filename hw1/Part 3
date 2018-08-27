@@ -4,20 +4,21 @@ import java.util.*;
 public class Encoding
 {
 	
+	public static String permu(String t)
+	{
+		return t;
+	}
+	
 	public static Set<String> permutation(String s)
 	{
 		Set<String> perm = new TreeSet<>();
-		
-		//String perm = new String();
 		
 		for(int i = 0; i < s.length(); i++)
 		{
 			String fixed = s.substring(i, i+1);
 			String rest = s.substring(0, i) + s.substring(i+1, s.length());
-			//permutation(rest) finds a possible permutation from the rest 
-			//of the elements to 
-			perm.add(fixed + permutation(rest));
-			//permutation(rest);
+			perm.add(fixed + permu(rest));
+			
 		}
 		
 		return perm;
