@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Encoding
+{
+	
+	public static String permu(String t)
+	{
+		String n = new String();
+		
+		for(int i = 0; i < t.length(); i++)
+		{
+			String fixed = t.substring(i, i+1);
+			String rest = t.substring(0, i) + t.substring(i+1, t.length());
+			permu(rest);
+			
+			//System.out.println(permu(rest));
+			
+		}
+		//System.out.println();
+	
+		return n;
+	}
+	
+	
+	public static String create(int m, int n)
+	{
+		  String code = new String();
+	      for(int i = 0; i < n; i++)
+	      {
+	         code += "-";
+	      }
+	      for(int j = 0; j < m; j++)
+	      {
+	         code += ".";
+	      }
+	      return code;
+	}
+	
+	
+	public static Set<String> morseCodes(int m, int n)
+	{
+	      Set<String> result = new TreeSet<>();
+	      
+	      String codes = create(m,n);
+	      
+	      for(int i = 0; i < codes.length(); i++)
+	      {
+	    	  result.add(permu(codes));
+	      }
+	      System.out.println();
+	      
+	      
+	      return result;
+	}
+
+}
