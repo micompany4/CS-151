@@ -1,49 +1,55 @@
 import java.util.*;
 
-
-public class Encoding
+public class Encoding 
 {
-	
 	public static String permu(String t)
 	{
-		return t;
-	}
-	
-	public static Set<String> permutation(String s)
-	{
-		Set<String> perm = new TreeSet<>();
+		String n = new String();
 		
-		for(int i = 0; i < s.length(); i++)
+		Set<String> dot = new TreeSet<>();
+		
+		
+		for(int i = 0; i < t.length(); i++)
 		{
-			String fixed = s.substring(i, i+1);
-			String rest = s.substring(0, i) + s.substring(i+1, s.length());
-			perm.add(fixed + permu(rest));
-			
+			String fixed = t.substring(i, i+1);
+			String rest = t.substring(0, i) + t.substring(i+1, t.length());
+			permu(rest);
 		}
-		
-		return perm;
+		//System.out.println();
+	
+		return n;
 	}
 	
 	
-   public static Set<String> morseCodes(int m, int n)
-   {
-      Set<String> result = new TreeSet<>();
-      
-      String code = new String();
-      for(int i = 0; i < n; i++)
-      {
-         code += "-";
-      }
-      for(int j = 0; j < m; j++)
-      {
-         code += ".";
-      }
-      
-      result.add(code);
-		
-      result = permutation(code);
-		
-      return result;
-   }
-   
+	public static String create(int m, int n)
+	{
+		  String code = new String();
+	      for(int i = 0; i < n; i++)
+	      {
+	         code += "-";
+	      }
+	      for(int j = 0; j < m; j++)
+	      {
+	         code += ".";
+	      }
+	      return code;
+	}
+	
+	
+	public static Set<String> morseCodes(int m, int n)
+	{
+	      Set<String> result = new TreeSet<>();
+	      
+	      String codes = create(m,n);
+	      
+	      //result.add(codes);
+	      
+	      //result.add(permu("", codes));
+	      permu(codes);
+	      System.out.println();
+	      
+			
+	      return result;
+	}
+	
 }
