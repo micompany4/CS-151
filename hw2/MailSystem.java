@@ -57,4 +57,4 @@ public class MailSystem
    
    private boolean b;
    private ArrayList<Mailbox> mailboxes;
-}
+}    
