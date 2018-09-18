@@ -21,7 +21,8 @@ public class Telephone
    */
    public void speak(String output)
    {
-      System.out.println(output);
+	   System.out.println(output);
+      
    }
 
    /**
