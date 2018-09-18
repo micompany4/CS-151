@@ -1,4 +1,3 @@
-
 /**
 Connects a phone to the mail system. The purpose of this
 class is to keep track of the state of a connection, since
@@ -24,9 +23,13 @@ public class Connection
 	 */
 	public void dial(String key)
 	{
-		if (state == CONNECTED)
+		if(state == ENTER_MAILBOX_MENU)
+			enterMenu(key);
+		else if (state == CONNECTED)
 			connect(key);
 		else if (state == RECORDING)
+			record(key);
+		else if(state == LOGIN)
 			login(key);
 		else if (state == CHANGE_PASSCODE)
 			changePasscode(key);
@@ -46,6 +49,7 @@ public class Connection
 	{
 		if (state == RECORDING || state == CHANGE_GREETING)
 			currentRecording += voice;
+		
 	}
 
 	/**
@@ -66,8 +70,8 @@ public class Connection
 	{
 		currentRecording = "";
 		accumulatedKeys = "";
-		state = CONNECTED;
-		phone.speak(INITIAL_PROMPT);
+		state = ENTER_MAILBOX_MENU;
+		phone.speak(ENTER_MAILBOX);
 	}
 
 	/**
@@ -212,15 +216,19 @@ public class Connection
 		}
 	}
 
-	private void enter(String key)
+	private void enterMenu(String key)
 	{
 		if(key.equals("1"))
 		{
+			phone.speak(INITIAL_PROMPT);
+			state = CONNECTED;
 			
 		}
 		else if(key.equals("2"))
 		{
-			
+			phone.speak(CHECK_PASSCODE);
+			state = LOGIN;
+		
 		}
 		else
 		{
@@ -235,13 +243,14 @@ public class Connection
 	private Telephone phone;
 	private int state;
 
-	private static final int DISCONNECTED = 0;
+	private static final int LOGIN = 0;
 	private static final int CONNECTED = 1;
 	private static final int RECORDING = 2;
 	private static final int MAILBOX_MENU = 3;
 	private static final int MESSAGE_MENU = 4;
 	private static final int CHANGE_PASSCODE = 5;
 	private static final int CHANGE_GREETING = 6;
+	private static final int ENTER_MAILBOX_MENU = 7;
 
 	private static final String INITIAL_PROMPT = 
 			"Enter mailbox number followed by #";      
@@ -255,6 +264,8 @@ public class Connection
 					+ "Enter 3 to delete the current message\n"
 					+ "Enter 4 to return to the main menu";
 	private static final String ENTER_MAILBOX = 
-			"To leave a message press(1)\n"
-			+ "to acess your mailbox, press (2)\n";
+			"To leave a message, press(1), "
+			+ "to acess your mailbox, press (2)";
+	private static final String CHECK_PASSCODE = 
+			"Please enter your passcode, followed by #";
 }
