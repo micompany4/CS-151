@@ -31,7 +31,7 @@ public class MailSystem
    */
    public Mailbox findMailbox(String ext)
    {
-      try 
+      try //reads the mailbox number entered and returns that mailbox to be used
       {
     	  b = false;
     	  int i = Integer.parseInt(ext);
@@ -40,9 +40,9 @@ public class MailSystem
         	  return  mailboxes.get(i - 1);
           }
       }
-      catch(NumberFormatException n)
+      catch(NumberFormatException n) //catches the NUmberFormatException and sets b to true
       {
-    	  b = true;
+    	  b = true; //signals that an invalid mailbox number has been entered
     	  return null;
     	  
       }
@@ -50,11 +50,14 @@ public class MailSystem
       
    }
 
+   /*
+    * returns a boolean regarding the mailbox number
+    */
    public boolean set()
    {
 	   return b;
    }
    
-   private boolean b;
+   private boolean b; //boolean expression to determine if a valid mailbox number was entered
    private ArrayList<Mailbox> mailboxes;
-}    
+}
