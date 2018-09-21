@@ -176,7 +176,7 @@ public class Connection
 		}
 		else
 		{
-			phone.speak(MAILBOX_MENU_TEXT);
+			phone.speak(MAILBOX_MENU_TEXT); //if an invalid response is recorded, it will prompt the menu again
 		}
 	}
 
@@ -212,10 +212,14 @@ public class Connection
 		}
 		else
 		{
-			phone.speak(MESSAGE_MENU_TEXT);
+			phone.speak(MESSAGE_MENU_TEXT); //if an invalid response is recorded, it will prompt the menu again
 		}
 	}
 
+	/*
+	 * method to manage the first menu that the user enters
+	 * Either login to a mailbox, or wants to leave a message
+	 */
 	private void enterMenu(String key)
 	{
 		if(key.equals("1"))
@@ -232,7 +236,7 @@ public class Connection
 		}
 		else
 		{
-			phone.speak(ENTER_MAILBOX);
+			phone.speak(ENTER_MAILBOX); //if an invalid response is recorded, it will prompt the menu again
 		}
 	}
 	
@@ -243,14 +247,14 @@ public class Connection
 	private Telephone phone;
 	private int state;
 
-	private static final int LOGIN = 0;
+	private static final int LOGIN = 0; //state to tell connection that the user wants to login
 	private static final int CONNECTED = 1;
 	private static final int RECORDING = 2;
 	private static final int MAILBOX_MENU = 3;
 	private static final int MESSAGE_MENU = 4;
 	private static final int CHANGE_PASSCODE = 5;
 	private static final int CHANGE_GREETING = 6;
-	private static final int ENTER_MAILBOX_MENU = 7;
+	private static final int ENTER_MAILBOX_MENU = 7; //constant to indicate state of entering the mailbox
 
 	private static final String INITIAL_PROMPT = 
 			"Enter mailbox number followed by #";      
@@ -263,6 +267,7 @@ public class Connection
 					+ "Enter 2 to save the current message\n"
 					+ "Enter 3 to delete the current message\n"
 					+ "Enter 4 to return to the main menu";
+	//menu for user to either leave a message or access a mailbox
 	private static final String ENTER_MAILBOX = 
 			"To leave a message, press(1), "
 			+ "to acess your mailbox, press (2)";
