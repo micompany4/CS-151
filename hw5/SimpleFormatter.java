@@ -37,8 +37,15 @@ public class SimpleFormatter implements InvoiceFormatter
     	  counter2 = total2/price2;
       }
       
-      String product1 = "Hammer:     $19.95                  " + counter1 + "\n";
-      String product2 = "Bundle: Hammer, Assorted nails (Discount 10.0%):     $26.91         " + counter2 + "\n";
+      String part1 = "Hammer:     $19.95 ea                            " + counter1;
+      String part1Total = String.format("%.2f", total1);
+      
+      String part2 = "Bundle: Hammer, Assorted nails (Discount 10.0%):     $26.91 ea       " + counter2;
+      String part2Total = String.format("%.2f", total2);
+      
+      
+      String product1 = part1 + "      total: "  + part1Total + "\n";
+      String product2 = part2 + "   total: " + part2Total +"\n";
       
       return product1 + product2;
    }
