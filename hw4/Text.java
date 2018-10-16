@@ -1,4 +1,4 @@
-package giraffe;
+
 
 import java.awt.FlowLayout;
 
