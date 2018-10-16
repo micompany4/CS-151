@@ -6,12 +6,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class Text extends Observer 
+/*
+ * The frame to contain the text fields for the user to input values
+ * These values will be reflected on the bar graph
+ * There are two Observers, Observer and Observer2: Observer2 uses actual bars to make a bar graph
+ * Observer uses brackets to represent the values
+ */
+public class Text extends Observer2 
 {
-	
-	
+	//constructor for the text frame to input values
 	public Text()
 	{
+		//creates the frame and text fields for entry
 		JFrame text = new JFrame("Data Entry");
 		JTextField input1 = new JTextField(10);
 		JTextField input2 = new JTextField(10);
@@ -22,7 +28,7 @@ public class Text extends Observer
 		
 		text.setLayout(new FlowLayout());
 		
-		
+		//adds the text fields and their corresponding labels
 		text.add(new JLabel("input1"));
 		text.add(input1);
 		text.add(new JLabel("input2"));
@@ -34,28 +40,23 @@ public class Text extends Observer
 		text.add(new JLabel("input5"));
 		text.add(input5);
 		
-		
+		//creates the action listeners for the text fields
+		//calls the update method from the Observer2 class to reflect changes onto the graph
+		//Note: values can not exceed 100
 		input1.addActionListener(event -> update(1, getTall()));
-		//input1.addActionListener(event -> System.out.println(getTall()));
 		input1.addActionListener(event -> setTall(Integer.parseInt(input1.getText())));
-		//input1.addActionListener(event -> System.out.println(getSection()));
-		input1.addActionListener(event -> setSection(1));
 		
 		input2.addActionListener(event -> update(2, getTall()));
-		input2.addActionListener(event -> setSection(2));
 		input2.addActionListener(event -> setTall(Integer.parseInt(input2.getText())));
 		
 		input3.addActionListener(event -> update(3, getTall()));
-		input3.addActionListener(event -> setSection(3));
 		input3.addActionListener(event -> setTall(Integer.parseInt(input3.getText())));
 		
 		input4.addActionListener(event -> update(4, getTall()));
-		input4.addActionListener(event -> setSection(4));
 		input4.addActionListener(event -> setTall(Integer.parseInt(input4.getText())));
 		
 		
 		input5.addActionListener(event -> update(5, getTall()));
-		input5.addActionListener(event -> setSection(5));
 		input5.addActionListener(event -> setTall(Integer.parseInt(input5.getText())));
 		
 		
