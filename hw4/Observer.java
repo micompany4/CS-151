@@ -1,4 +1,4 @@
-package giraffe;
+
 
 /*
  * Observer class that implements the observer pattern
