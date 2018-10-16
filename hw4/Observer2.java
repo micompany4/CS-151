@@ -1,4 +1,4 @@
-package giraffe;
+
 
 /*
  * The second observer class that extends BarGrapher
